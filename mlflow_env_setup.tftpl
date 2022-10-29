@@ -1,0 +1,10 @@
+#!/bin/bash
+
+sudo yum update
+sudo amazon-linux-extras install docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+sudo systemctl enable docker.service
+docker pull jamesty2114/mlflow:latest
+docker run --name mlflow_server -p 80:5000 -e BUCKET='${bucket}' -e DB_USER='${db_user}' \
+-e DB_PASSWORD='${db_password}' -e DB_URL='${db_url}' -e DATABASE='${database}' -dit jamesty2114/mlflow
