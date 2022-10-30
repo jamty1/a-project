@@ -3,7 +3,7 @@
 This is a proof-of-concept deployment to deploy an MLflow server in AWS using EC2, RDS, and S3.
 
 The project uses Docker to containerize the MLflow application and run it on an EC2 instance.
-The Docker image being used is defined in the provided Dockerfile and is uploaded to Dockerhub under `jamesty2114/mlflow`.
+The Docker image being used is defined in the provided Dockerfile and is uploaded to Dockerhub under `jamesty2114/mlflow`.  The container opens port 5000 to port 80 of the instance to allow communication from the MLflow application to the public internet.
 
 The MLflow server uses a MySQL RDS database with two Availability Zones (minimum required) which will store all the metrics, parameters, notes, etc.,
 and the S3 bucket to store images, models, etc.
